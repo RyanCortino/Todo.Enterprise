@@ -1,3 +1,7 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Serilog;
+
 namespace WinformsUI;
 
 internal static class Program
@@ -8,9 +12,43 @@ internal static class Program
     [STAThread]
     static void Main()
     {
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
+        // Setup application Host
+        IHost host = CreateHostBuilder().Build();
+
+        ServiceProvider = host.Services;
+
+        // Initialize the AppConfig
+        Log.Logger.Information("Application Starting.");
+
         ApplicationConfiguration.Initialize();
-        Application.Run(new Form1());
+
+        // Run the registered application context
+        var appContext = host.Services.GetRequiredService<ApplicationContext>();
+
+        Application.Run(appContext);
+    }
+
+    public static IServiceProvider? ServiceProvider { get; private set; }
+
+    static IHostBuilder CreateHostBuilder()
+    {
+        return Host.CreateDefaultBuilder()
+            // Register the app context
+            .ConfigureServices(
+                (services) => services.AddTransient<ApplicationContext, TodoAppContext>()
+            )
+            // Registers all other services
+            .ConfigureServices(
+                (context, services) => services.AddDesktopServices(context.Configuration)
+            )
+            // Configures Logging
+            .UseSerilog(
+                (ctx, lc) =>
+                    lc.ReadFrom
+                        .Configuration(ctx.Configuration)
+                        .Enrich.FromLogContext()
+                        .WriteTo.Console()
+                        .WriteTo.Debug()
+            );
     }
 }
