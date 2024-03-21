@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -15,9 +16,11 @@ internal static class Program
         // Setup application Host
         IHost host = CreateHostBuilder().Build();
 
-        ServiceProvider = host.Services;
+        using IServiceScope serviceScope = host.Services.CreateScope();
 
-        // Initialize the AppConfig
+        ServiceProvider = serviceScope.ServiceProvider;
+
+        // Setup application config
         Log.Logger.Information("Application Starting.");
 
         ApplicationConfiguration.Initialize();
@@ -25,23 +28,29 @@ internal static class Program
         // Run the registered application context
         var appContext = host.Services.GetRequiredService<ApplicationContext>();
 
-        Application.Run(appContext);
+        System.Windows.Forms.Application.Run(appContext);
     }
 
     public static IServiceProvider? ServiceProvider { get; private set; }
 
-    static IHostBuilder CreateHostBuilder()
-    {
-        return Host.CreateDefaultBuilder()
-            // Register the app context
+    static IHostBuilder CreateHostBuilder() =>
+        Host.CreateDefaultBuilder()
+            // Setup App Settings
+            .ConfigureAppConfiguration(BuildConfig)
+            // Register the (required) app context
             .ConfigureServices(
-                (services) => services.AddTransient<ApplicationContext, TodoAppContext>()
+                (services) =>
+                    services.AddTransient<ApplicationContext, AppContextWithSplashScreen>()
             )
-            // Registers all other services
+            // Registers project services
             .ConfigureServices(
-                (context, services) => services.AddDesktopServices(context.Configuration)
+                (context, services) =>
+                {
+                    services.AddApplicationServices();
+                    services.AddDesktopServices(context.Configuration);
+                }
             )
-            // Configures Logging
+            // Setup Serilog Logging
             .UseSerilog(
                 (ctx, lc) =>
                     lc.ReadFrom
@@ -50,5 +59,16 @@ internal static class Program
                         .WriteTo.Console()
                         .WriteTo.Debug()
             );
+
+    static void BuildConfig(IConfigurationBuilder builder)
+    {
+        builder
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile(
+                $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json",
+                optional: true
+            )
+            .AddEnvironmentVariables();
     }
 }

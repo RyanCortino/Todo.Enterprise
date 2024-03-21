@@ -1,4 +1,4 @@
-﻿namespace WinformsUI.Common.Options;
+﻿namespace Application.Common.Options;
 
 public class ApplicationOptions
 {

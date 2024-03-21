@@ -1,23 +1,25 @@
 ﻿using Microsoft.Extensions.Configuration;
-using WinformsUI.Common;
-using WinformsUI.Common.Options;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-internal static class DependencyInjection
+public static class DependencyInjection
 {
     public static IServiceCollection AddDesktopServices(
         this IServiceCollection services,
         IConfiguration configuration
     )
     {
-        services.Configure<ApplicationOptions>(
+        // Config
+        _ = services.Configure<ApplicationOptions>(
             configuration.GetSection(ApplicationOptions.SectionName)
         );
 
-        services.AddTransient<SplashView>();
+        // Views
+        services.AddTransient<ISplashView, SplashForm>();
+        services.AddTransient<IMainView, MainForm>();
 
-        //services.AddTransient<BaseMdiForm>();
+        // Presenters
+        services.AddTransient<SplashPresenter>();
 
         return services;
     }
