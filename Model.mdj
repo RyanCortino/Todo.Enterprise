@@ -1,0 +1,117 @@
+{
+	"_type": "Project",
+	"_id": "AAAAAAFF+h6SjaM2Hec=",
+	"name": "Todo.Enterprise",
+	"ownedElements": [
+		{
+			"_type": "UMLModel",
+			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Model",
+			"ownedElements": [
+				{
+					"_type": "UMLClassDiagram",
+					"_id": "AAAAAAFF+qBtyKM79qY=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "Main",
+					"defaultDiagram": true
+				}
+			]
+		},
+		{
+			"_type": "UMLSubsystem",
+			"_id": "AAAAAAGOYTIhQdYntMU=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "TodoLists.Backend",
+			"ownedElements": [
+				{
+					"_type": "UMLSubsystem",
+					"_id": "AAAAAAGOYTphddYvdUY=",
+					"_parent": {
+						"$ref": "AAAAAAGOYTIhQdYntMU="
+					},
+					"name": "Application"
+				},
+				{
+					"_type": "UMLSubsystem",
+					"_id": "AAAAAAGOYTyD4NY4GwQ=",
+					"_parent": {
+						"$ref": "AAAAAAGOYTIhQdYntMU="
+					},
+					"name": "Domain"
+				},
+				{
+					"_type": "UMLSubsystem",
+					"_id": "AAAAAAGOYTyQR9Y8hXs=",
+					"_parent": {
+						"$ref": "AAAAAAGOYTIhQdYntMU="
+					},
+					"name": "Infrastructure"
+				},
+				{
+					"_type": "UMLSubsystem",
+					"_id": "AAAAAAGOYTyTnNZAQ/4=",
+					"_parent": {
+						"$ref": "AAAAAAGOYTIhQdYntMU="
+					},
+					"name": "Web"
+				},
+				{
+					"_type": "UMLSubsystem",
+					"_id": "AAAAAAGOYTyb7dZE2Mc=",
+					"_parent": {
+						"$ref": "AAAAAAGOYTIhQdYntMU="
+					},
+					"name": "Application.FunctionalTests"
+				},
+				{
+					"_type": "UMLSubsystem",
+					"_id": "AAAAAAGOYTyha9ZI6P4=",
+					"_parent": {
+						"$ref": "AAAAAAGOYTIhQdYntMU="
+					},
+					"name": "Application.UnitTests"
+				},
+				{
+					"_type": "UMLSubsystem",
+					"_id": "AAAAAAGOYTykr9ZMdNM=",
+					"_parent": {
+						"$ref": "AAAAAAGOYTIhQdYntMU="
+					},
+					"name": "Domain.UnitTests"
+				},
+				{
+					"_type": "UMLSubsystem",
+					"_id": "AAAAAAGOYTyoONZQp6c=",
+					"_parent": {
+						"$ref": "AAAAAAGOYTIhQdYntMU="
+					},
+					"name": "Infrastructure.IntegrationTests"
+				},
+				{
+					"_type": "UMLSubsystem",
+					"_id": "AAAAAAGOYTysANZUP38=",
+					"_parent": {
+						"$ref": "AAAAAAGOYTIhQdYntMU="
+					},
+					"name": "Web.AcceptanceTests"
+				}
+			]
+		},
+		{
+			"_type": "UMLSubsystem",
+			"_id": "AAAAAAGOYTLqatYrfvg=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "TodoLists.Frontend"
+		}
+	],
+	"author": "Ryan Cortino"
+}
