@@ -1,4 +1,4 @@
-﻿namespace WinformsUI.Forms;
+﻿namespace Winforms.Forms;
 
 public partial class MainForm : Form, IMainView
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace WinformsUI.Services;
+namespace Winforms.Services;
 
 internal class AppContextWithSplashScreen(
     ILogger<AppContextWithSplashScreen> logger,

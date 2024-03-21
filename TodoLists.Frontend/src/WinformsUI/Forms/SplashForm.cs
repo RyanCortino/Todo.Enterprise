@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace WinformsUI.Forms;
+namespace Winforms.Forms;
 
 public partial class SplashForm : Form, ISplashView, IProgress<string>
 {

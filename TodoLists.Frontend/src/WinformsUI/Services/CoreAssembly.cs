@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace WinformsUI.Services;
+namespace Winforms.Services;
 
 public static class CoreAssembly
 {

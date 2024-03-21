@@ -2,8 +2,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Winforms.Services;
 
-namespace WinformsUI;
+namespace Winforms;
 
 internal static class Program
 {

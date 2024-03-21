@@ -1,3 +1,3 @@
-﻿namespace WinformsUI.Presenters;
+﻿namespace Winforms.Presenters;
 
 internal class SplashPresenter { }

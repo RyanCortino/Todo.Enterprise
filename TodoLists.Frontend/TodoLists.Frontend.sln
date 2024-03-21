@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{948BA464-C1B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2D115DCA-9D5E-457B-BAF6-80F8409328B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinformsUI", "src\WinformsUI\WinformsUI.csproj", "{89FEAC9D-73F4-4ED3-8C89-0DDBF41037E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Winforms", "src\WinformsUI\Winforms.csproj", "{89FEAC9D-73F4-4ED3-8C89-0DDBF41037E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Application\Application.csproj", "{8A373372-FC3C-4A60-A638-0064C5CD957E}"
 EndProject

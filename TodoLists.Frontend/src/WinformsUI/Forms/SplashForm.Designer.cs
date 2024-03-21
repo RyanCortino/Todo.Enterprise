@@ -1,4 +1,4 @@
-﻿namespace WinformsUI.Forms;
+﻿namespace Winforms.Forms;
 
 partial class SplashForm
 {

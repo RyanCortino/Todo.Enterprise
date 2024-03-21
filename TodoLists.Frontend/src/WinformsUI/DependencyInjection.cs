@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Winforms.Presenters;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Winforms;
 
 public static class DependencyInjection
 {
