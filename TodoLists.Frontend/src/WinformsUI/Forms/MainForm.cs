@@ -4,11 +4,15 @@ public partial class MainForm : Form, IMainView
 {
     private readonly IFileSystemProvider _fileSystemSvc;
 
+    private readonly ILoginView _loginView;
+
     private int _childFormNumber = 0;
 
-    public MainForm(IFileSystemProvider fileSystemSvc)
+    public MainForm(IFileSystemProvider fileSystemSvc, ILoginView loginView)
     {
         _fileSystemSvc = fileSystemSvc;
+
+        _loginView = loginView;
 
         InitializeComponent();
     }

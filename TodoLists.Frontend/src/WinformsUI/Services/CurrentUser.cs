@@ -1,8 +1,8 @@
-﻿using WinformsUI.Common.Interfaces;
-
-namespace WinformsUI.Services;
+﻿namespace WinformsUI.Services;
 
 internal class CurrentUser : IUser
 {
-    public string? JwtToken { get; set; }
+    public string? AuthToken { get; set; }
+
+    public string? UserName { get; set; }
 }

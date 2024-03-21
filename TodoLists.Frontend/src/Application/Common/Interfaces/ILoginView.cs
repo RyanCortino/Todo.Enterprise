@@ -1,8 +1,6 @@
-﻿using WinformsUI.Models;
+﻿namespace Application.Common.Interfaces;
 
-namespace WinformsUI.Common.Interfaces;
-
-internal interface ILoginView
+public interface ILoginView
 {
     string EmailAddress { get; set; }
 
@@ -10,5 +8,5 @@ internal interface ILoginView
 
     event EventHandler<EventArgs> OnControlUpdated;
 
-    void InitializeView();
+    Task InitializeViewAsync();
 }
