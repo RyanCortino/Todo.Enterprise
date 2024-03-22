@@ -2,10 +2,14 @@
 
 public partial class MainForm : Form, IMainView
 {
+    private readonly IFileSystemProvider _fileSystemSvc;
+
     private int _childFormNumber = 0;
 
-    public MainForm()
+    public MainForm(IFileSystemProvider fileSystemSvc)
     {
+        _fileSystemSvc = fileSystemSvc;
+
         InitializeComponent();
     }
 
@@ -20,12 +24,7 @@ public partial class MainForm : Form, IMainView
 
     private void OpenFile(object sender, EventArgs e)
     {
-        OpenFileDialog openFileDialog =
-            new()
-            {
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal),
-                Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*"
-            };
+        OpenFileDialog openFileDialog = _fileSystemSvc.OpenFile();
 
         if (openFileDialog.ShowDialog(this) == DialogResult.OK)
         {

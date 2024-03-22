@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Winforms.Presenters;
 
 namespace Winforms;
 
@@ -12,7 +11,7 @@ public static class DependencyInjection
     )
     {
         // Config
-        _ = services.Configure<ApplicationOptions>(
+        services.Configure<ApplicationOptions>(
             configuration.GetSection(ApplicationOptions.SectionName)
         );
 
@@ -22,6 +21,9 @@ public static class DependencyInjection
 
         // Presenters
         services.AddTransient<SplashPresenter>();
+
+        // Helpers
+        services.AddTransient<IFileSystemProvider, WindowsFileSystem>();
 
         return services;
     }
